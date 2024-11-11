@@ -1,10 +1,39 @@
 import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
+import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import Router from 'unplugin-vue-router/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
   plugins: [
-    Vue()
+    // https://github.com/vitejs/vite-plugin-vue
+    Vue(),
+    // https://github.com/antfu/unocss
+    // see unocss.config.ts for config
+    UnoCSS(),
+    // https://github.com/posva/unplugin-vue-router
+    Router(),
+    // https://github.com/elonehoo/unplugin-auto-import-api
+    AutoImport({
+      imports: [
+        'vue',
+        '@vueuse/core',
+        VueRouterAutoImports,
+      ],
+      dts: true,
+      dirs: [
+        './src/composables',
+      ],
+      vueTemplate: true,
+    }),
+
+    // https://github.com/antfu/vite-plugin-components
+    Components({
+      dts: true,
+    }),
   ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`

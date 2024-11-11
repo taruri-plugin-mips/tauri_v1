@@ -7,5 +7,6 @@
   },
   "include": [
     "vite.config.ts",
+    "typed-router.d.ts"
   ]
 }

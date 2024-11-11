@@ -1,10 +1,23 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
+import { handleHotUpdate, routes } from 'vue-router/auto-routes'
+import App from './App.vue'
+import '@unocss/reset/tailwind.css'
+import './styles/bootstrap.css'
+import 'uno.css'
 
-const pinia = createPinia();
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(pinia);
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
 
-app.mount("#app");
+
+app.use(router)
+
+app.mount('#app')
+
+if (import.meta.hot) {
+  handleHotUpdate(router)
+}

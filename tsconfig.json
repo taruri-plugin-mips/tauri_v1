@@ -11,6 +11,7 @@
     "baseUrl": ".",
     "types": [
       "vite/client",
+      "unplugin-vue-router/client"
     ],
     "resolveJsonModule": true,
     "esModuleInterop": true,
