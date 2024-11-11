@@ -1,10 +1,10 @@
-import { defineConfig } from "vite";
-import Vue from "@vitejs/plugin-vue";
+import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Router from 'unplugin-vue-router/vite'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
@@ -47,5 +47,5 @@ export default defineConfig(async () => ({
   },
   // 3. to make use of `TAURI_DEBUG` and other env variables
   // https://tauri.studio/v1/api/config#buildconfig.beforedevcommand
-  envPrefix: ["VITE_", "TAURI_"],
-}));
+  envPrefix: ['VITE_', 'TAURI_'],
+}))
