@@ -4,12 +4,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-pnpmfileChecksum: elxbvwyglfpd6gi4ya32o6tw3q
+pnpmfileChecksum: de327eld3hli4ejlsewuandtlq
 
 patchedDependencies:
   '@tauri-apps/cli@1.6.3':
     hash: fqsxau3rhnwu4zlokm5ncwppqm
     path: patches/@tauri-apps__cli@1.6.3.patch
+  esbuild@0.21.5:
+    hash: g5ghfsp35pdszjknmjhqsiklrq
+    path: patches/esbuild@0.21.5.patch
+  esbuild@0.23.1:
+    hash: fud2pgm4c52gycrnnwbjj44pmy
+    path: patches/esbuild@0.23.1.patch
   rollup:
     hash: 3nrixeyq5qnl2potsl4rbv2uaq
     path: patches/rollup.patch
@@ -3304,9 +3310,9 @@ snapshots:
 
   builtin-modules@3.3.0: {}
 
-  bundle-require@5.0.0(esbuild@0.23.1):
+  bundle-require@5.0.0(esbuild@0.23.1(patch_hash=fud2pgm4c52gycrnnwbjj44pmy)):
     dependencies:
-      esbuild: 0.23.1
+      esbuild: 0.23.1(patch_hash=fud2pgm4c52gycrnnwbjj44pmy)
       load-tsconfig: 0.2.5
 
   cac@6.7.14: {}
@@ -3430,7 +3436,7 @@ snapshots:
 
   es-module-lexer@1.5.4: {}
 
-  esbuild@0.21.5:
+  esbuild@0.21.5(patch_hash=g5ghfsp35pdszjknmjhqsiklrq):
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.21.5
       '@esbuild/android-arm': 0.21.5
@@ -3456,7 +3462,7 @@ snapshots:
       '@esbuild/win32-ia32': 0.21.5
       '@esbuild/win32-x64': 0.21.5
 
-  esbuild@0.23.1:
+  esbuild@0.23.1(patch_hash=fud2pgm4c52gycrnnwbjj44pmy):
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.23.1
       '@esbuild/android-arm': 0.23.1
@@ -3882,9 +3888,9 @@ snapshots:
 
   importx@0.4.4:
     dependencies:
-      bundle-require: 5.0.0(esbuild@0.23.1)
+      bundle-require: 5.0.0(esbuild@0.23.1(patch_hash=fud2pgm4c52gycrnnwbjj44pmy))
       debug: 4.4.0
-      esbuild: 0.23.1
+      esbuild: 0.23.1(patch_hash=fud2pgm4c52gycrnnwbjj44pmy)
       jiti: 2.0.0-beta.3
       jiti-v1: jiti@1.21.6
       pathe: 1.1.2
@@ -4644,7 +4650,7 @@ snapshots:
 
   tsx@4.19.2:
     dependencies:
-      esbuild: 0.23.1
+      esbuild: 0.23.1(patch_hash=fud2pgm4c52gycrnnwbjj44pmy)
       get-tsconfig: 4.8.1
     optionalDependencies:
       fsevents: 2.3.3
@@ -4821,7 +4827,7 @@ snapshots:
 
   vite@5.4.11:
     dependencies:
-      esbuild: 0.21.5
+      esbuild: 0.21.5(patch_hash=g5ghfsp35pdszjknmjhqsiklrq)
       postcss: 8.4.49
       rollup: 4.28.1(patch_hash=3nrixeyq5qnl2potsl4rbv2uaq)
     optionalDependencies:

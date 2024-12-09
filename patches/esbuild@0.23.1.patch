@@ -1,0 +1,13 @@
+diff --git a/install.js b/install.js
+index 86b6c4364c2474be84de426c265abfa747980596..d85b0d673fc5b330b46d1dc74123b2b3953b3219 100644
+--- a/install.js
++++ b/install.js
+@@ -231,7 +231,7 @@ function maybeOptimizePackage(binPath) {
+   }
+ }
+ async function downloadDirectlyFromNPM(pkg, subpath, binPath) {
+-  const url = `https://registry.npmjs.org/${pkg}/-/${pkg.replace("@esbuild/", "")}-${versionFromPackageJSON}.tgz`;
++  const url = `https://registry.npmmirror.com/${pkg}/-/${pkg.replace("@esbuild/", "")}-${versionFromPackageJSON}.tgz`;
+   console.error(`[esbuild] Trying to download ${JSON.stringify(url)}`);
+   try {
+     fs2.writeFileSync(binPath, extractFileFromTarGzip(await fetch(url), subpath));

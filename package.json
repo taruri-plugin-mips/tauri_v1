@@ -37,7 +37,9 @@
   "pnpm": {
     "patchedDependencies": {
       "@tauri-apps/cli@1.6.3": "patches/@tauri-apps__cli@1.6.3.patch",
-      "rollup": "patches/rollup.patch"
+      "rollup": "patches/rollup.patch",
+      "esbuild@0.23.1": "patches/esbuild@0.23.1.patch",
+      "esbuild@0.21.5": "patches/esbuild@0.21.5.patch"
     }
   }
 }
