@@ -1,0 +1,14 @@
+diff --git a/dist/native.js b/dist/native.js
+index 68a0e1e7a543843a9a820b5736d2c250feeb6c4c..4ee31a0a7b35c88eea8fc1c402e529d5cd56f4cf 100644
+--- a/dist/native.js
++++ b/dist/native.js
+@@ -24,7 +24,8 @@ const bindingsByPlatformAndArch = {
+ 		ppc64: { base: 'linux-powerpc64le-gnu', musl: null },
+ 		riscv64: { base: 'linux-riscv64-gnu', musl: null },
+ 		s390x: { base: 'linux-s390x-gnu', musl: null },
+-		x64: { base: 'linux-x64-gnu', musl: 'linux-x64-musl' }
++		x64: { base: 'linux-x64-gnu', musl: 'linux-x64-musl' },
++		loong64: { base:'linux-loong64-gnu', musl: null }
+ 	},
+ 	win32: {
+ 		arm64: { base: 'win32-arm64-msvc' },

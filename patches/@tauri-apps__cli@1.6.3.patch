@@ -1,0 +1,14 @@
+diff --git a/index.js b/index.js
+index 4bf34ea7644b7bd521da4161352eaf28a3342472..5b6c0cfe014d7eeab946fa05a0a21315e36f8d8d 100644
+--- a/index.js
++++ b/index.js
+@@ -237,6 +237,9 @@ switch (platform) {
+           loadError = e
+         }
+         break
++      case 'loong64':
++        nativeBinding = require('tauri-cli-linux-loong64-gnu')
++        break
+       default:
+         throw new Error(`Unsupported architecture on Linux: ${arch}`)
+     }
