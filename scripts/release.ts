@@ -61,7 +61,7 @@ function handleZip(folder: string, zipPath: string) {
   })
 }
 
-function run() {
+function handleReleaseFolder() {
   consola.info('Using', name, 'release script version', version)
   // remove release folder
   removeReleaseFolder().then(() => {
@@ -92,6 +92,10 @@ function run() {
       })
     })
   })
+}
+
+function run() {
+  handleReleaseFolder()
 }
 
 run()
