@@ -87,7 +87,7 @@ function handleReleaseFolder() {
         // create zip file
         handleZip(
           path.join(rootPath, 'release', 'source'),
-          path.join(rootPath, 'release', `release.zip`),
+          path.join(rootPath, 'release', `${name}-${version}-release.zip`),
         )
       })
     })
