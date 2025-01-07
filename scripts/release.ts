@@ -6,25 +6,15 @@ import archiver from 'archiver'
 import { consola } from 'consola'
 import { copy, mkdirp, remove } from 'fs-extra'
 import { name, version } from '../package.json'
+import { run as DebRun } from './deb'
 import { ignore } from './ignore'
+import { removeFolder } from './utils/remove-folder'
 
 // resolve __filename and __dirname
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 // resolve root path
 const rootPath = path.join(__dirname, '..')
-
-function removeReleaseFolder(releaseFolder: string = 'release') {
-  return new Promise<void>((resolve, reject) => {
-    remove(path.join(rootPath, releaseFolder)).then(() => {
-      consola.success('remove prev release folder success')
-      resolve()
-    }).catch((err) => {
-      consola.error('remove prev release folder failed')
-      reject(err)
-    })
-  })
-}
 
 function handleBuildWebModule() {
   consola.start('build web module')
@@ -64,7 +54,7 @@ function handleZip(folder: string, zipPath: string) {
 function handleReleaseFolder() {
   consola.info('Using', name, 'release script version', version)
   // remove release folder
-  removeReleaseFolder().then(() => {
+  removeFolder().then(() => {
     // build web project
     handleBuildWebModule()
     // create release folder
@@ -85,10 +75,12 @@ function handleReleaseFolder() {
         }),
       ]).then(() => {
         // create zip file
-        handleZip(
-          path.join(rootPath, 'release', 'source'),
-          path.join(rootPath, 'release', `${name}-${version}-release.zip`),
-        )
+        DebRun().then(() => {
+          handleZip(
+            path.join(rootPath, 'release', 'source'),
+            path.join(rootPath, 'release', `${name}-${version}-release.zip`),
+          )
+        })
       })
     })
   })

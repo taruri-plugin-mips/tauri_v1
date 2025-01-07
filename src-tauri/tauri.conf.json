@@ -5,10 +5,6 @@
     "distDir": "../dist",
     "withGlobalTauri": false
   },
-  "package": {
-    "productName": "tauri-template",
-    "version": "0.0.0"
-  },
   "tauri": {
     "allowlist": {
       "all": false,

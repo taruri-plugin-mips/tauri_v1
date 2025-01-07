@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "release": "tsx scripts/release.ts",
+    "release:zip": "tsx scripts/release.ts",
+    "release": "pnpm run release:zip",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
