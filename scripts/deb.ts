@@ -10,16 +10,31 @@ const __dirname = dirname(__filename)
 // resolve root path
 const rootPath = path.join(__dirname, '..', 'release', 'source')
 
+const archList = [
+  {
+    name: 'amd',
+    target: 'amd64',
+  },
+  {
+    name: 'arm',
+    target: 'arm64',
+  },
+  {
+    name: 'mips',
+    target: 'mips64el',
+  },
+]
+
 function createControl(name: string, version: string, arch: string, description: string) {
-  return `
-  Package: ${name}
-  Version: ${version}
-  Architecture: ${arch}
-  Priority: optional
-  Depends: libwebkit2gtk-4.0-37, libgtk-3-0
-  Description: ${description}
-  (none)
-  `
+  return `Package: ${name}
+Version: ${version}
+Architecture: ${arch}
+Priority: optional
+Depends: libwebkit2gtk-4.0-37, libgtk-3-0
+Description: ${description}
+ (none)
+
+`
 }
 
 async function createIcons(shareDir: string, name: string) {
@@ -56,8 +71,6 @@ export async function run() {
     encoding: 'utf-8',
   })
 
-  const archList = ['amd64', 'arm64', 'mips64', 'loongarch64']
-
   // 解析 Cargo.toml 文件内容
   const name = tomlfile.match(/name\s*=\s*"(.+)"/)?.[1] || 'tauri-app'
   const version = tomlfile.match(/version\s*=\s*"(.+)"/)?.[1] || '0.0.0'
@@ -68,14 +81,14 @@ export async function run() {
   await fs.ensureDir(envsDir)
   // 在 envs 目录下创建每一个架构的目录
   for (const arch of archList) {
-    const archDir = path.join(envsDir, arch)
+    const archDir = path.join(envsDir, arch.name)
     await fs.ensureDir(archDir)
     // 在每一个架构的目录下创建 DEBIAN 目录
     const debianDir = path.join(archDir, 'DEBIAN')
     await fs.ensureDir(debianDir)
     // 在 DEBIAN 目录下创建 control 文件
     const controlFile = path.join(debianDir, 'control')
-    await fs.writeFile(controlFile, createControl(name, version, arch, description))
+    await fs.writeFile(controlFile, createControl(name, version, arch.target, description))
     // 在 archDir 目录下创建 usr 目录
     const usrDir = path.join(archDir, 'usr')
     await fs.ensureDir(usrDir)
